@@ -64,6 +64,7 @@ export default function HeroOrbital({ onActivateChat, onActivateVoice, martinaSt
   const agentY = useTransform(scrollYProgress, [0, 0.18], [40, 0]);
   const agentScale = useTransform(scrollYProgress, [0, 0.18], [0.9, 1]);
   const supportOpacity = useTransform(scrollYProgress, [0.08, 0.22], [0, 1]);
+  const buttonOpacity = useTransform(scrollYProgress, [0.12, 0.24], [0, 1]);
 
   useEffect(() => setCurrentState(martinaState), [martinaState]);
 
@@ -665,13 +666,14 @@ export default function HeroOrbital({ onActivateChat, onActivateVoice, martinaSt
               ))}
             </div>
 
-            <button
+            <motion.button
               type="button"
               onClick={activateVoice}
+              style={reducedMotion ? undefined : { opacity: buttonOpacity }}
               className="v6-cta absolute z-30 inline-flex items-center justify-center gap-2 rounded-full border border-[#FFF5F8]/18 bg-[#E6007E] px-7 py-3.5 font-heading text-sm uppercase leading-none tracking-widest text-white shadow-[0_0_42px_rgba(230,0,126,0.5),0_20px_80px_rgba(0,0,0,0.55)] transition hover:scale-105 hover:bg-[#ff0a90] active:scale-95 sm:px-9 sm:py-4"
             >
               <svg aria-hidden="true" className="h-[15px] w-[15px] shrink-0 translate-y-[0.5px]" viewBox="0 0 24 24" fill="none"><path d="M12 13.75c1.66 0 3-1.34 3-3V6.25c0-1.66-1.34-3-3-3s-3 1.34-3 3v4.5c0 1.66 1.34 3 3 3Z" stroke="currentColor" strokeWidth="1.65"/><path d="M6.5 10.25c0 3.04 2.46 5.5 5.5 5.5s5.5-2.46 5.5-5.5M12 15.75v3.5M9.25 19.25h5.5" stroke="currentColor" strokeWidth="1.65" strokeLinecap="round"/><path d="M10.25 6.5h3.5" stroke="currentColor" strokeWidth="1.25" strokeLinecap="round" opacity="0.7"/></svg> HABLA CON MARTINA
-            </button>
+            </motion.button>
           </motion.div>
 
           <motion.p
