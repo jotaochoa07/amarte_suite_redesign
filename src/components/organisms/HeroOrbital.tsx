@@ -57,13 +57,13 @@ export default function HeroOrbital({ onActivateChat, onActivateVoice, martinaSt
     offset: ['start start', 'end start'],
   });
 
-  const introOpacity = useTransform(scrollYProgress, [0, 0.15, 0.28], [1, 1, 0]);
-  const introY = useTransform(scrollYProgress, [0, 0.28], [0, -100]);
-  const introScale = useTransform(scrollYProgress, [0, 0.28], [1, 0.92]);
-  const agentOpacity = useTransform(scrollYProgress, [0.12, 0.28, 0.45], [0, 0.8, 1]);
-  const agentY = useTransform(scrollYProgress, [0.12, 0.38], [80, 0]);
-  const agentScale = useTransform(scrollYProgress, [0.12, 0.38], [0.85, 1]);
-  const supportOpacity = useTransform(scrollYProgress, [0.28, 0.45, 0.58], [0, 0.8, 1]);
+  const introOpacity = useTransform(scrollYProgress, [0, 0.10, 0.22], [1, 1, 0]);
+  const introY = useTransform(scrollYProgress, [0, 0.22], [0, -120]);
+  const introScale = useTransform(scrollYProgress, [0, 0.22], [1, 0.92]);
+  const agentOpacity = useTransform(scrollYProgress, [0.08, 0.22, 0.32], [0, 0.8, 1]);
+  const agentY = useTransform(scrollYProgress, [0.08, 0.26], [60, 0]);
+  const agentScale = useTransform(scrollYProgress, [0.08, 0.26], [0.85, 1]);
+  const supportOpacity = useTransform(scrollYProgress, [0.18, 0.30, 0.38], [0, 0.8, 1]);
 
   useEffect(() => setCurrentState(martinaState), [martinaState]);
 
@@ -237,7 +237,7 @@ export default function HeroOrbital({ onActivateChat, onActivateVoice, martinaSt
   return (
     <section
       ref={rootRef}
-      className={`hero-agent-v6 ${stateClass} relative min-h-[160vh] w-full overflow-hidden bg-[#0D0D11] text-[#FFF5F8] md:min-h-[180vh]`}
+      className={`hero-agent-v6 ${stateClass} relative min-h-[200vh] w-full overflow-hidden bg-[#0D0D11] text-[#FFF5F8] md:min-h-[220vh]`}
       style={rootStyle}
     >
       <style>{`
