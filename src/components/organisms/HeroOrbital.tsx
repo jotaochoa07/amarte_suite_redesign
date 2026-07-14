@@ -57,14 +57,13 @@ export default function HeroOrbital({ onActivateChat, onActivateVoice, martinaSt
     offset: ['start start', 'end start'],
   });
 
-  const introOpacity = useTransform(scrollYProgress, [0, 0.18], [1, 0]);
-  const introY = useTransform(scrollYProgress, [0, 0.18], [0, -100]);
-  const introScale = useTransform(scrollYProgress, [0, 0.18], [1, 0.92]);
-  const agentOpacity = useTransform(scrollYProgress, [0, 0.18], [0.35, 1]);
-  const agentY = useTransform(scrollYProgress, [0, 0.18], [40, 0]);
-  const agentScale = useTransform(scrollYProgress, [0, 0.18], [0.9, 1]);
-  const supportOpacity = useTransform(scrollYProgress, [0.08, 0.22], [0, 1]);
-  const buttonOpacity = useTransform(scrollYProgress, [0.12, 0.24], [0, 1]);
+  const introOpacity = useTransform(scrollYProgress, [0, 0.18, 0.34], [1, 1, 0.2]);
+  const introY = useTransform(scrollYProgress, [0, 0.34], [0, -34]);
+  const introScale = useTransform(scrollYProgress, [0, 0.34], [1, 0.92]);
+  const agentOpacity = useTransform(scrollYProgress, [0.02, 0.15, 0.3], [0, 0.56, 1]);
+  const agentY = useTransform(scrollYProgress, [0.02, 0.32], [48, 20]);
+  const agentScale = useTransform(scrollYProgress, [0.02, 0.32], [0.82, 1.08]);
+  const supportOpacity = useTransform(scrollYProgress, [0.16, 0.3, 0.42], [0, 0.7, 1]);
 
   useEffect(() => setCurrentState(martinaState), [martinaState]);
 
@@ -238,7 +237,7 @@ export default function HeroOrbital({ onActivateChat, onActivateVoice, martinaSt
   return (
     <section
       ref={rootRef}
-      className={`hero-agent-v6 ${stateClass} relative min-h-[135vh] w-full overflow-hidden bg-[#0D0D11] text-[#FFF5F8] md:min-h-[150vh]`}
+      className={`hero-agent-v6 ${stateClass} relative min-h-[112vh] w-full overflow-hidden bg-[#0D0D11] text-[#FFF5F8] md:min-h-[122vh]`}
       style={rootStyle}
     >
       <style>{`
@@ -618,7 +617,7 @@ export default function HeroOrbital({ onActivateChat, onActivateVoice, martinaSt
             animate={{ opacity: 1, y: 0 }}
             style={reducedMotion ? undefined : { opacity: introOpacity, y: introY, scale: introScale }}
             transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
-            className="absolute top-[16vh] left-0 right-0 px-4 md:relative md:top-0 md:px-0 max-w-5xl z-10"
+            className="max-w-5xl"
           >
             <div className="mb-3 font-body text-[10px] uppercase tracking-[0.4em] text-[#FFF5F8]/58 sm:text-xs">Voice Agent · Martina</div>
             <h1 className="font-heading text-[clamp(4rem,19vw,7.2rem)] uppercase leading-[0.78] tracking-[-0.06em] sm:text-[clamp(5rem,14vw,8.5rem)] md:text-[clamp(6rem,10vw,9rem)]">
@@ -629,7 +628,7 @@ export default function HeroOrbital({ onActivateChat, onActivateVoice, martinaSt
 
           <motion.div
             style={reducedMotion ? undefined : { opacity: agentOpacity, y: agentY, scale: agentScale }}
-            className="v6-stage relative flex aspect-square w-[min(78vw,350px)] items-center justify-center rounded-full md:w-[min(58vw,560px)]"
+            className="v6-stage relative flex aspect-square w-[min(92vw,560px)] items-center justify-center rounded-full md:w-[min(58vw,560px)]"
           >
             <div className="v6-orb absolute inset-0 flex items-center justify-center rounded-full">
               <div className="absolute inset-[12%] rounded-full bg-[radial-gradient(circle,rgba(230,0,126,0.12),transparent_60%)] blur-2xl" />
@@ -666,14 +665,13 @@ export default function HeroOrbital({ onActivateChat, onActivateVoice, martinaSt
               ))}
             </div>
 
-            <motion.button
+            <button
               type="button"
               onClick={activateVoice}
-              style={reducedMotion ? undefined : { opacity: buttonOpacity }}
               className="v6-cta absolute z-30 inline-flex items-center justify-center gap-2 rounded-full border border-[#FFF5F8]/18 bg-[#E6007E] px-7 py-3.5 font-heading text-sm uppercase leading-none tracking-widest text-white shadow-[0_0_42px_rgba(230,0,126,0.5),0_20px_80px_rgba(0,0,0,0.55)] transition hover:scale-105 hover:bg-[#ff0a90] active:scale-95 sm:px-9 sm:py-4"
             >
               <svg aria-hidden="true" className="h-[15px] w-[15px] shrink-0 translate-y-[0.5px]" viewBox="0 0 24 24" fill="none"><path d="M12 13.75c1.66 0 3-1.34 3-3V6.25c0-1.66-1.34-3-3-3s-3 1.34-3 3v4.5c0 1.66 1.34 3 3 3Z" stroke="currentColor" strokeWidth="1.65"/><path d="M6.5 10.25c0 3.04 2.46 5.5 5.5 5.5s5.5-2.46 5.5-5.5M12 15.75v3.5M9.25 19.25h5.5" stroke="currentColor" strokeWidth="1.65" strokeLinecap="round"/><path d="M10.25 6.5h3.5" stroke="currentColor" strokeWidth="1.25" strokeLinecap="round" opacity="0.7"/></svg> HABLA CON MARTINA
-            </motion.button>
+            </button>
           </motion.div>
 
           <motion.p
